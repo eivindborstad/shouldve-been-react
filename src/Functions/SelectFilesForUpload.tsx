@@ -7,7 +7,7 @@ export function handleSingleFileSelectedForUpload(e: React.ChangeEvent, fileExte
         return;
     }
 
-    const file: Blob = files[0];
+    const file: Blob | undefined = files[0];
 
     const fileName: string | undefined = files[0]?.name;
 
@@ -21,10 +21,10 @@ export function handleSingleFileSelectedForUpload(e: React.ChangeEvent, fileExte
         return;
     }
 
-    setFileToUpload(file);
+    setFileToUpload(file ?? null);
 
     if (setFileName !== null) {
-        setFileName(fileName);
+        setFileName(fileName ?? null);
     }
 }
 
@@ -42,6 +42,8 @@ export function handleMultipleFilesSelectedForUpload(e: React.ChangeEvent, fileE
 
     for (let i: number = 0; i < files.length; i++) {
 
+        const file: Blob | undefined = files[i];
+
         const fileName: string | undefined = files[i]?.name;
 
         if (fileExtensions.length > 0 && fileExtensions.find((fileExtension: string) => fileName?.toLowerCase().endsWith(fileExtension)) === undefined) {
@@ -54,8 +56,10 @@ export function handleMultipleFilesSelectedForUpload(e: React.ChangeEvent, fileE
             return;
         }
 
-        blobFiles.push(files[i]);
-        newFileNames.push(fileName);
+        if (file !== undefined && fileName !== undefined) {
+            blobFiles.push(file);
+            newFileNames.push(fileName);
+        }
     }
 
     setFilesToUpload(blobFiles);

@@ -12,9 +12,9 @@ export function handleTraverseList(e: React.KeyboardEvent, currentId: string | n
         }
     
         if (e.key === 'ArrowDown' && currentIndex < sortedIds.length - 1) {
-            onChange(sortedIds[currentIndex + 1], true);
+            onChange(sortedIds[currentIndex + 1] ?? null, true);
         } else if (e.key === 'ArrowUp' && currentIndex > 0) {
-            onChange(sortedIds[currentIndex - 1], true);
+            onChange(sortedIds[currentIndex - 1] ?? null, true);
         }
     }
 }
