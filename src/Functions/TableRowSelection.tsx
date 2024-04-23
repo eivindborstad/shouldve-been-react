@@ -66,3 +66,9 @@ export function selectRightClick(e: React.MouseEvent, id: string, allRows: strin
         setRightClickSelected(null);
     }
 }
+
+export function invertSelection(allRows: string[], selectedRows: string[], setSelectedRows: (value: string[]) => void): void {
+
+    const newSelectedRows: string[] = allRows.filter((currentId: string) => !selectedRows.includes(currentId));
+    setSelectedRows(newSelectedRows);
+}
