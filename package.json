@@ -1,6 +1,6 @@
 {
   "name": "shouldve-been-react",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "main": "./dist/entry.js",
   "module": "./dist/entry.mjs",
   "types": "./dist/entry.d.ts",
