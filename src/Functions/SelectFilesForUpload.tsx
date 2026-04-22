@@ -1,4 +1,4 @@
-export function handleSingleFileSelectedForUpload(e: React.ChangeEvent, fileExtensions: string[], setFileToUpload: (file: Blob | null) => void, setFileName: ((value: string | null) => void) | null, setErrorMessage: (value: string | null) => void, setClearFileInputKey: () => void): void {
+export function handleSingleFileSelectedForUpload(e: React.ChangeEvent, fileExtensions: string[], setFileToUpload: (file: File | null) => void, setFileName: ((value: string | null) => void) | null, setErrorMessage: (value: string | null) => void, setClearFileInputKey: () => void): void {
 
     const files: FileList | null = (e.target as HTMLInputElement).files;
     
@@ -7,7 +7,7 @@ export function handleSingleFileSelectedForUpload(e: React.ChangeEvent, fileExte
         return;
     }
 
-    const file: Blob | undefined = files[0];
+    const file: File | undefined = files[0];
 
     const fileName: string | undefined = files[0]?.name;
 
@@ -28,7 +28,7 @@ export function handleSingleFileSelectedForUpload(e: React.ChangeEvent, fileExte
     }
 }
 
-export function handleMultipleFilesSelectedForUpload(e: React.ChangeEvent, fileExtensions: string[], setFilesToUpload: (files: Blob[]) => void, setFileNames: ((value: string[]) => void) | null, setErrorMessage: (value: string | null) => void, setClearFileInputKey: () => void): void {
+export function handleMultipleFilesSelectedForUpload(e: React.ChangeEvent, fileExtensions: string[], setFilesToUpload: (files: File[]) => void, setFileNames: ((value: string[]) => void) | null, setErrorMessage: (value: string | null) => void, setClearFileInputKey: () => void): void {
 
     const files: FileList | null = (e.target as HTMLInputElement).files;
     
@@ -37,12 +37,12 @@ export function handleMultipleFilesSelectedForUpload(e: React.ChangeEvent, fileE
         return;
     }
 
-    const blobFiles: Blob[] = [];
+    const blobFiles: File[] = [];
     const newFileNames: string[] = [];
 
     for (let i: number = 0; i < files.length; i++) {
 
-        const file: Blob | undefined = files[i];
+        const file: File | undefined = files[i];
 
         const fileName: string | undefined = files[i]?.name;
 
